@@ -113,8 +113,8 @@ function updateLanguage() {
   const introHeading = document.querySelector("#intro h1");
   if (introHeading) {
     introHeading.innerHTML = language === "en"
-      ? "If you solve all 5 problems,<br>💛 I will be your boyfriend 💛"
-      : "ប្រសិនបើអ្នកដោះស្រាយលំហាត់ទាំង ៥ បាន<br>💛 ខ្ញុំនឹងក្លាយជាសង្សាររបស់អ្នក 💛";
+      ? "If you solve all 5 problems,<br>😍 I will be your boyfriend 😍"
+      : "ប្រសិនបើអ្នកដោះស្រាយលំហាត់ទាំង ៥ បាន<br>😍 ខ្ញុំនឹងក្លាយជាសង្សាររបស់អ្នក 😍";
   }
 
   const startButton = document.querySelector(".btn-yes");
