@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Rajdhani','Noto Sans Khmer','Khmer OS Battambang','Segoe UI',sans-serif;font-weight:500}
+@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@400;500;700&family=Koulen&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Khmer OS Battambang','Battambang','Rajdhani','Segoe UI',sans-serif;font-weight:500}
 body{min-height:100vh;background:linear-gradient(135deg,#1a0b2e,#2d1b4e,#0f0c29);display:flex;align-items:center;justify-content:center;padding:20px}
 .hidden{display:none!important}
 .language-btn{position:fixed;top:18px;right:20px;z-index:10000;padding:9px 16px;border:1px solid #ff8fb8;border-radius:20px;background:rgba(255,143,184,.16);color:#ffb3cd;font:500 15px 'Rajdhani',sans-serif;cursor:pointer}
 .language-btn:hover{background:#ff4e8e;color:#fff}
 .creator-credit{position:fixed;right:20px;bottom:16px;color:#ffb3cd;font-size:13px;letter-spacing:.04em;text-align:right}
 .card{background:rgba(255,255,255,.08);backdrop-filter:blur(15px);border:1px solid rgba(255,150,200,.3);border-radius:24px;padding:50px 40px;text-align:center;max-width:700px;width:100%;box-shadow:none}
-h1{color:#ff8fb8;font-size:26px;line-height:1.8;margin-bottom:25px}
+h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;font-size:26px;line-height:1.8;margin-bottom:25px}
 .heart{margin:10px 0 25px;animation:beat 1.2s infinite}.heart img{display:block;width:260px;max-width:100%;height:auto;margin:auto}
 @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 .btn{padding:14px 34px;border:none;border-radius:30px;font-size:17px;cursor:pointer;margin:8px;font-family:inherit}
@@ -20,7 +20,7 @@ h1{color:#ff8fb8;font-size:26px;line-height:1.8;margin-bottom:25px}
 .term .loading{display:block;color:#8b949e;font-size:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #30363d}
 .term .problem-label{display:block;color:#ffcc66;font-size:15px;margin-bottom:6px}
 .term .problem-text{display:block;color:#f8f8f2;font-family:'Latin Modern Math','Cambria Math','STIX Two Math',serif;font-size:20px;font-weight:500;line-height:1.6;padding:14px 16px;background:rgba(255,255,255,.06);border-left:4px solid #ff4e8e;border-radius:8px}
-[lang="km"] .term .problem-text{font-family:'Noto Sans Khmer','Khmer OS Battambang','Segoe UI',sans-serif}
+[lang="km"] .term .problem-text{font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif}
 .abox{margin-top:20px;display:flex;gap:10px}
 .abox input{flex:1;padding:14px 18px;border-radius:12px;border:2px solid #ff8fb8;background:rgba(255,255,255,.9);font-size:17px;outline:none}
 .abox button{padding:14px 30px;border-radius:12px;border:none;cursor:pointer;background:linear-gradient(135deg,#ff4e8e,#ff8fb8);color:#fff;font-size:16px;font-family:inherit}
