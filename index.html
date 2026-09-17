@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💘 For You 💘</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<button class="language-btn" id="languageBtn" type="button" onclick="toggleLanguage()">KH</button>
+
+<div class="card" id="intro">
+  <h1>If you solve all 5 problems,<br>💛 I will be your boyfriend 💛</h1>
+  <div class="heart"><img src="heart-lock.svg" alt="Heart and lock"></div>
+  <button class="btn btn-yes" onclick="startQuiz()">Start Quiz</button>
+  <button class="btn btn-no" id="btnNo">No</button>
+</div>
+
+<div class="card hidden" id="quiz">
+  <div class="quiz-top">
+    <div class="prog" id="prog"></div>
+    <div class="timer" id="timer" aria-live="polite">10:00</div>
+    <button class="info-btn" id="infoBtn" type="button" aria-label="Show quiz rules">i</button>
+  </div>
+  <div class="info-modal hidden" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="info-box">
+      <button class="info-close" id="infoClose" type="button" aria-label="Close">&times;</button>
+      <h2 id="infoTitle">Quiz Rules</h2>
+      <ul>
+        <li>Solve all 5 problems to complete the quiz.</li>
+        <li>You have 3 attempts for each problem.</li>
+        <li>Use the hint after an incorrect answer.</li>
+        <li>Enter your answer and click Submit, or press Enter.</li>
+        <li>After 3 incorrect attempts, the quiz restarts from Problem 1.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="terminal">
+    <div class="bar">
+      <div class="dot" style="background:#ff5f57"></div>
+      <div class="dot" style="background:#febc2e"></div>
+      <div class="dot" style="background:#28c840"></div>
+      <div class="ttitle">math_challenge.exe - NO COPY - NO SCREENSHOT</div>
+    </div>
+    <div class="term" id="term"></div>
+  </div>
+  <div class="abox">
+    <button class="back-btn" id="backBtn" type="button" onclick="goBack()">Back</button>
+    <input id="ans" placeholder="Enter your answer here..." autocomplete="off">
+    <button id="submitBtn" onclick="checkAns()" disabled>Submit</button>
+  </div>
+  <label class="ai-confirm">
+    <input type="checkbox" id="aiConfirm">
+    <span id="aiConfirmText">I confirm that I solved this without AI 😂</span>
+  </label>
+  <div class="status" id="status"></div>
+  <div class="attempts" id="attempts"></div>
+</div>
+
+<div class="result-modal hidden" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+  <div class="result-box">
+    <button class="result-close" id="resultClose" type="button" aria-label="Close">&times;</button>
+    <div class="result-icon" id="resultIcon"></div>
+    <h2 id="resultTitle"></h2>
+    <p id="resultMessage"></p>
+  </div>
+</div>
+
+<div class="card hidden" id="success">
+  <h1>🎉 You are my boyfriend now! 🎉</h1>
+  <div class="heart"><img src="heart-lock.svg" alt="Heart and lock"></div>
+  <p style="color:#ffb3cd;font-size:20px">You solved them perfectly! True love is the best answer 💕</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

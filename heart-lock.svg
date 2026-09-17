@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" role="img" aria-label="Heart and lock">
+  <defs>
+    <linearGradient id="heartGrad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#ff8ec7"/>
+      <stop offset="100%" stop-color="#ff4e8e"/>
+    </linearGradient>
+    <linearGradient id="lockGrad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#ffd8ea"/>
+      <stop offset="100%" stop-color="#ffb3cd"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M160 214c-20-18-72-57-96-82C35 101 53 48 98 48c20 0 35 8 48 24 13-16 28-24 48-24 45 0 63 53 34 84-24 25-76 64-96 82Z" fill="url(#heartGrad)" opacity="0.22"/>
+    <path d="M160 208c-16-15-62-51-84-73-27-27-24-71 10-93 21-13 45-7 60 8 15-15 39-21 60-8 34 22 37 66 10 93-22 22-68 58-84 73Z" fill="url(#heartGrad)"/>
+    <path d="M85 106h150c11 0 20 9 20 20v62c0 11-9 20-20 20H85c-11 0-20-9-20-20v-62c0-11 9-20 20-20Zm25-18c0-23 18-42 40-42s40 19 40 42v15h-12V88c0-16-13-29-28-29s-28 13-28 29v15h-12V88Z" fill="url(#lockGrad)"/>
+    <path d="M160 118c-9 0-16 7-16 16v15h32v-15c0-9-7-16-16-16Z" fill="#ff5a99" opacity="0.75"/>
+  </g>
+</svg>
