@@ -110,6 +110,13 @@ function updateLanguage() {
     languageBtn.textContent = language === "en" ? "KH" : "EN";
   }
 
+  const creatorCredit = document.getElementById("creatorCredit");
+  if (creatorCredit) {
+    creatorCredit.textContent = language === "en"
+      ? "Creator: SOVANSARO RIM RAVI"
+      : "អ្នកបង្កើត៖ សុវណ្ណសរោ រីម រ៉ាវី";
+  }
+
   const introHeading = document.querySelector("#intro h1");
   if (introHeading) {
     introHeading.innerHTML = language === "en"

@@ -3,6 +3,7 @@ body{min-height:100vh;background:linear-gradient(135deg,#1a0b2e,#2d1b4e,#0f0c29)
 .hidden{display:none!important}
 .language-btn{position:fixed;top:18px;right:20px;z-index:10000;padding:9px 16px;border:1px solid #ff8fb8;border-radius:20px;background:rgba(255,143,184,.16);color:#ffb3cd;font:500 15px 'Rajdhani',sans-serif;cursor:pointer}
 .language-btn:hover{background:#ff4e8e;color:#fff}
+.creator-credit{position:fixed;right:20px;bottom:16px;color:#ffb3cd;font-size:13px;letter-spacing:.04em;text-align:right}
 .card{background:rgba(255,255,255,.08);backdrop-filter:blur(15px);border:1px solid rgba(255,150,200,.3);border-radius:24px;padding:50px 40px;text-align:center;max-width:700px;width:100%;box-shadow:none}
 h1{color:#ff8fb8;font-size:26px;line-height:1.8;margin-bottom:25px}
 .heart{margin:10px 0 25px;animation:beat 1.2s infinite}.heart img{display:block;width:260px;max-width:100%;height:auto;margin:auto}
@@ -69,6 +70,7 @@ h1{color:#ff8fb8;font-size:26px;line-height:1.8;margin-bottom:25px}
   body{padding:14px}
   .card{padding:22px 14px 18px;border-radius:18px}
   .language-btn{top:12px;right:12px;padding:8px 12px;font-size:13px}
+  .creator-credit{right:14px;bottom:10px;font-size:11px}
   .quiz-top{gap:8px;align-items:center;flex-wrap:wrap}
   .prog{order:2;flex-basis:100%;padding:0 4px}
   .timer{min-width:60px;font-size:13px;padding:6px 8px}
