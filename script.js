@@ -2,35 +2,30 @@ const problems = [
   {
     text: "Solve: log2(x) + log2(x - 2) = 3. Find x.",
     kh: "ដោះស្រាយ៖ log2(x) + log2(x - 2) = 3។ រក x។",
-    ans: "4",
     hint: "Combine logs: log2[x(x-2)] = 3, then solve x²-2x=8. Remember x > 2.",
     khHint: "បូកលោការីត៖ log2[x(x-2)] = 3 បន្ទាប់មកដោះស្រាយ x²-2x=8។ ចងចាំថា x > 2។"
   },
   {
     text: "Solve for x: 3^(2x - 1) = 81. Find x.",
     kh: "ដោះស្រាយរក x៖ 3^(2x - 1) = 81។ រក x។",
-    ans: "2.5",
     hint: "81 = 3^4, so 2x - 1 = 4.",
     khHint: "81 = 3^4 ដូច្នេះ 2x - 1 = 4។"
   },
   {
     text: "If sin(θ) = 3/5 and θ is acute, find cos(θ) as a decimal.",
     kh: "ប្រសិនបើ sin(θ) = 3/5 និង θ ជាមុំស្រួច រក cos(θ) ជាទសភាគ។",
-    ans: "0.8",
     hint: "Use sin²θ + cos²θ = 1, so cosθ = √(1 - 9/25).",
     khHint: "ប្រើ sin²θ + cos²θ = 1 ដូច្នេះ cosθ = √(1 - 9/25)។"
   },
   {
     text: "For 2x² - 7x + 3 = 0, find the sum of the roots.",
     kh: "ចំពោះ 2x² - 7x + 3 = 0 រកផលបូកឫស។",
-    ans: "3.5",
     hint: "By Vieta's formulas, the sum of roots is -b/a.",
     khHint: "តាមរូបមន្ត Vieta ផលបូកឫសគឺ -b/a។"
   },
   {
     text: "Given f(x) = x² - 4x + 1, find f(2) + f(5).",
     kh: "គេឲ្យ f(x) = x² - 4x + 1។ រក f(2) + f(5)។",
-    ans: "3",
     hint: "Calculate f(2)=? and f(5)=? separately, then add them.",
     khHint: "គណនា f(2)=? និង f(5)=? ដាច់ដោយឡែក បន្ទាប់មកបូកចូលគ្នា។"
   }
@@ -40,31 +35,26 @@ const quiz2Questions = [
   {
     question: "តើព្រះសិទ្ធត្ថទ្រង់ប្រសូតនៅទីកន្លែងណា?",
     options: ["ពុទ្ធគយា (Bodh Gaya)", "ឧទ្យានលុម្ពិនី (Lumbini Park)", "ព្រៃឥសិបតនមិគទាយវ័ន (Sarnath)", "ក្រុងកុសិនារា (Kushinagar)"],
-    correctAnswerIndex: 1,
     explanation: "ព្រះសិទ្ធត្ថទ្រង់ប្រសូតនៅឧទ្យានលុម្ពិនី (បច្ចុប្បន្នស្ថិតក្នុងប្រទេសនេប៉ាល់)។"
   },
   {
     question: "តើព្រះនាមដើមកាលព្រះអង្គនៅជាព្រះរាជបុត្រមានឈ្មោះអ្វី?",
     options: ["សិទ្ធត្ថ (Siddhartha)", "អានន្ទ (Ananda)", "រាហុល (Rahula)", "ទេវទត្ត (Devadatta)"],
-    correctAnswerIndex: 0,
     explanation: "ព្រះនាមដើមរបស់ព្រះអង្គគឺ សិទ្ធត្ថ គោតម។"
   },
   {
     question: "តើព្រះសមណគោតមទ្រង់បានត្រាស់ដឹងជាព្រះពុទ្ធនៅក្រោមដើមឈើអ្វី?",
     options: ["ដើមជ្រៃ", "ដើមរាំង", "ដើមពោធិព្រឹក្ស (Bodhi Tree)", "ដើមចំប៉ី"],
-    correctAnswerIndex: 2,
     explanation: "ព្រះអង្គទ្រង់ត្រាស់ដឹងនូវអនុត្តរសម្មាសម្ពោធិញាណ នៅក្រោមគល់ដើមពោធិព្រឹក្ស នាពុទ្ធគយា។"
   },
   {
     question: "តើធម្មទេសនាលើកដំបូងបង្អស់របស់ព្រះពុទ្ធមានឈ្មោះថាអ្វី?",
     options: ["មង្គលសូត្រ", "ធម្មចក្កប្បវត្តនសូត្រ (Dhammacakkappavattana Sutta)", "មេត្តាសូត្រ", "រតនសូត្រ"],
-    correctAnswerIndex: 1,
     explanation: "ធម្មចក្កប្បវត្តនសូត្រ គឺជាបឋមទេសនាដែលទ្រង់ប្រោសបញ្ចវគ្គិយភិក្ខុទាំង ៥ អង្គ។"
   },
   {
     question: "តើព្រះពុទ្ធទ្រង់យាងចូលបរិនិព្វាននៅទីកន្លែងណា?",
     options: ["ក្រុងកុសិនារា (Kushinagar)", "ក្រុងរាជគ្រឹះ (Rajgir)", "ក្រុងវេសាលី (Vaishali)", "ក្រុងកបិលព័ស្ដុ (Kapilavastu)"],
-    correctAnswerIndex: 0,
     explanation: "ព្រះពុទ្ធទ្រង់យាងរំលត់ខន្ធចូលកាន់បរិនិព្វាននៅក្រោមដើមសាលព្រឹក្សទាំងគូ ក្នុងក្រុងកុសិនារា។"
   }
 ];
@@ -234,12 +224,27 @@ let isAnswerLocked = false;
 let quiz2Cur = 0;
 let quiz2Answered = false;
 const MAXTRIES = 3;
-const QUIZ_MINUTES = 10;
-let remainingSeconds = QUIZ_MINUTES * 60;
+const QUESTION_MINUTES = 2;
+let remainingSeconds = QUESTION_MINUTES * 60;
 let timerId = null;
+let apiReady = false;
+let activeQuiz = 0;
+
+async function loadQuizData() {
+  const [quiz1Response, quiz2Response] = await Promise.all([
+    fetch("/api/quiz1/questions"),
+    fetch("/api/quiz2/questions")
+  ]);
+  if (!quiz1Response.ok || !quiz2Response.ok) throw new Error("Quiz server is unavailable");
+  const quiz1Data = await quiz1Response.json();
+  const quiz2Data = await quiz2Response.json();
+  problems.splice(0, problems.length, ...quiz1Data);
+  quiz2Questions.splice(0, quiz2Questions.length, ...quiz2Data);
+  apiReady = true;
+}
 
 function updateTimer() {
-  const timer = document.getElementById("timer");
+  const timer = document.getElementById(activeQuiz === 2 ? "timer2" : "timer");
   if (!timer) return;
 
   const minutes = Math.floor(remainingSeconds / 60);
@@ -250,7 +255,7 @@ function updateTimer() {
 
 function startTimer() {
   clearInterval(timerId);
-  remainingSeconds = QUIZ_MINUTES * 60;
+  remainingSeconds = QUESTION_MINUTES * 60;
   updateTimer();
   timerId = setInterval(function () {
     remainingSeconds -= 1;
@@ -366,6 +371,7 @@ document.addEventListener("keydown", function (e) {
 });
 
 function startQuiz() {
+  if (!apiReady) return;
   const intro = document.getElementById("intro");
   const success = document.getElementById("success");
   const quiz = document.getElementById("quiz");
@@ -374,13 +380,15 @@ function startQuiz() {
   if (success) success.classList.add("hidden");
   if (quiz) quiz.classList.remove("hidden");
 
+  shuffle(problems);
+  activeQuiz = 1;
   cur = 0;
   drawProg();
   render();
-  startTimer();
 }
 
 function startQuiz2() {
+  if (!apiReady) return;
   const intro = document.getElementById("intro");
   const quiz = document.getElementById("quiz");
   const quiz2 = document.getElementById("quiz2");
@@ -392,12 +400,22 @@ function startQuiz2() {
   if (quizNext) quizNext.classList.add("hidden");
   if (success) success.classList.add("hidden");
   if (quiz2) quiz2.classList.remove("hidden");
+  shuffle(quiz2Questions);
+  activeQuiz = 2;
   quiz2Cur = 0;
   renderQuiz2();
 }
 
+function shuffle(items) {
+  for (let index = items.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [items[index], items[randomIndex]] = [items[randomIndex], items[index]];
+  }
+}
+
 function exitQuiz() {
   clearInterval(timerId);
+  activeQuiz = 0;
   const quiz = document.getElementById("quiz");
   const intro = document.getElementById("intro");
   const success = document.getElementById("success");
@@ -411,6 +429,8 @@ function exitQuiz() {
 }
 
 function exitQuiz2() {
+  clearInterval(timerId);
+  activeQuiz = 0;
   const quiz2 = document.getElementById("quiz2");
   const intro = document.getElementById("intro");
   if (quiz2) quiz2.classList.add("hidden");
@@ -431,6 +451,7 @@ function renderQuiz2() {
   if (feedback) feedback.textContent = "";
   if (feedback) feedback.className = "quiz2-feedback";
   if (nextButton) nextButton.disabled = true;
+  startTimer();
   if (optionsEl) {
     optionsEl.innerHTML = "";
     question.options.forEach(function (option, index) {
@@ -446,17 +467,23 @@ function renderQuiz2() {
   }
 }
 
-function answerQuiz2(index, selectedButton) {
+async function answerQuiz2(index, selectedButton) {
   if (quiz2Answered) return;
 
   const question = quiz2Questions[quiz2Cur];
   const feedback = document.getElementById("quiz2Feedback");
-  if (index === question.correctAnswerIndex) {
+  const response = await fetch("/api/quiz2/answer", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: question.id, answerIndex: index })
+  });
+  const result = await response.json();
+  if (result.correct) {
     quiz2Answered = true;
     selectedButton.classList.add("correct");
     if (feedback) {
       feedback.className = "quiz2-feedback correct";
-      feedback.textContent = "ត្រឹមត្រូវ! " + question.explanation;
+      feedback.textContent = "ត្រឹមត្រូវ! " + result.explanation;
     }
     document.querySelectorAll(".quiz2-option").forEach(function (button) {
       button.disabled = true;
@@ -556,9 +583,10 @@ function render() {
   if (backButton) backButton.disabled = cur === 0;
   updateAttempts();
   if (answerInput) answerInput.focus();
+  startTimer();
 }
 
-function checkAns() {
+async function checkAns() {
   const inp = document.getElementById("ans");
   const s = document.getElementById("status");
 
@@ -571,7 +599,14 @@ function checkAns() {
     return;
   }
 
-  if (value === problems[cur].ans) {
+  const response = await fetch("/api/quiz1/answer", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: problems[cur].id, answer: value })
+  });
+  const result = await response.json();
+
+  if (result.correct) {
     isAnswerLocked = true;
     s.className = "status ok";
     s.textContent = tr("correct");
@@ -595,7 +630,7 @@ function checkAns() {
 
   if (tries > 0) {
     s.className = "status bad";
-    s.textContent = tr("incorrect").replace("{n}", tries) + (language === "kh" ? problems[cur].khHint : problems[cur].hint);
+    s.textContent = tr("incorrect").replace("{n}", tries) + (language === "kh" ? result.khHint : result.hint);
     showResult(false);
     setTimeout(closeResult, 1300);
   } else {
@@ -642,9 +677,12 @@ function timeUp() {
   setTimeout(function () {
     closeResult();
     const quiz = document.getElementById("quiz");
+    const quiz2 = document.getElementById("quiz2");
     const intro = document.getElementById("intro");
     if (quiz) quiz.classList.add("hidden");
+    if (quiz2) quiz2.classList.add("hidden");
     if (intro) intro.classList.remove("hidden");
+    activeQuiz = 0;
     cur = 0;
     drawProg();
   }, 2200);
@@ -703,6 +741,7 @@ function celebrate() {
 
 function finish() {
   clearInterval(timerId);
+  activeQuiz = 0;
   const quiz = document.getElementById("quiz");
   const quizNext = document.getElementById("quizNext");
   if (quiz) quiz.classList.add("hidden");
@@ -752,5 +791,10 @@ if (rewardSubmit) {
 }
 
 updateLanguage();
-drawProg();
-updateAttempts();
+loadQuizData().then(function () {
+  drawProg();
+  updateAttempts();
+}).catch(function () {
+  const status = document.getElementById("status");
+  if (status) status.textContent = "Quiz server is unavailable. Please start the server and reload.";
+});
