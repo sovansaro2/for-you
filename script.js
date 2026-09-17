@@ -169,6 +169,7 @@ function updateLanguage() {
 
 let cur = 0;
 let tries = 3;
+let isAnswerLocked = false;
 const MAXTRIES = 3;
 const QUIZ_MINUTES = 10;
 let remainingSeconds = QUIZ_MINUTES * 60;
@@ -373,6 +374,8 @@ function updateAttempts() {
 }
 
 function render() {
+  isAnswerLocked = false;
+
   const term = document.getElementById("term");
   const status = document.getElementById("status");
   const answerInput = document.getElementById("ans");
@@ -402,7 +405,7 @@ function checkAns() {
   const inp = document.getElementById("ans");
   const s = document.getElementById("status");
 
-  if (!inp || !s) return;
+  if (!inp || !s || isAnswerLocked) return;
 
   const value = inp.value.trim();
   if (!value) {
@@ -412,6 +415,7 @@ function checkAns() {
   }
 
   if (value === problems[cur].ans) {
+    isAnswerLocked = true;
     s.className = "status ok";
     s.textContent = tr("correct");
     showResult(true);
