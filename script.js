@@ -68,7 +68,7 @@ const translations = {
     answer: "Enter your answer here...",
     aiConfirm: "I confirm that I solved this without AI 😂",
     rules: "Quiz Rules",
-    solve: "Solve all 5 problems to complete the quiz.",
+    solve: "Solve all problems to complete the quiz.",
     attempts: "You have 3 attempts for each problem.",
     hintRule: "Use the hint after an incorrect answer.",
     enter: "Enter your answer and click Submit, or press Enter.",
@@ -100,7 +100,7 @@ const translations = {
     answer: "បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...",
     aiConfirm: "ខ្ញុំបញ្ជាក់ថា ខ្ញុំបានដោះស្រាយដោយខ្លួនឯង មិនប្រើ AI ទេ 😂",
     rules: "លក្ខខណ្ឌ Quiz",
-    solve: "ត្រូវដោះស្រាយលំហាត់ទាំង ៥ ដើម្បីបញ្ចប់ Quiz។",
+    solve: "ត្រូវដោះស្រាយលំហាត់ទាំងអស់ ដើម្បីបញ្ចប់ Quiz។",
     attempts: "មានឱកាសព្យាយាម ៣ ដងសម្រាប់លំហាត់នីមួយៗ។",
     attemptsLeft: "នៅសល់ {n} ដង ក្នុងចំណោម 3 ដង",
     hintRule: "ប្រើ Hint បន្ទាប់ពីឆ្លើយខុស។",
@@ -224,7 +224,7 @@ let isAnswerLocked = false;
 let quiz2Cur = 0;
 let quiz2Answered = false;
 const MAXTRIES = 3;
-const QUESTION_MINUTES = 2;
+const QUESTION_MINUTES = 3;
 let remainingSeconds = QUESTION_MINUTES * 60;
 let timerId = null;
 let apiReady = false;
@@ -568,7 +568,7 @@ function render() {
   const aiConfirm = document.getElementById("aiConfirm");
 
   if (term) {
-    term.innerHTML = "<span class='loading'>C:\\Users\\heart_lock&gt; loading problem " + (cur + 1) + "/5 ...</span><span class='problem-label'>Problem " + (cur + 1) + ":</span><span class='problem-text'>" + (language === "kh" ? problems[cur].kh : problems[cur].text) + "</span>";
+    term.innerHTML = "<span class='loading'>C:\\Users\\heart_lock&gt; loading problem " + (cur + 1) + "/" + problems.length + " ...</span><span class='problem-label'>Problem " + (cur + 1) + ":</span><span class='problem-text'>" + (language === "kh" ? problems[cur].kh : problems[cur].text) + "</span>";
   }
 
   if (status) {

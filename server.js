@@ -10,7 +10,14 @@ const quiz1 = [
   { id: 2, text: "Solve for x: 3^(2x - 1) = 81. Find x.", kh: "ដោះស្រាយរក x៖ 3^(2x - 1) = 81។ រក x។", hint: "81 = 3^4, so 2x - 1 = 4.", khHint: "81 = 3^4 ដូច្នេះ 2x - 1 = 4។", answer: "2.5" },
   { id: 3, text: "If sin(θ) = 3/5 and θ is acute, find cos(θ) as a decimal.", kh: "ប្រសិនបើ sin(θ) = 3/5 និង θ ជាមុំស្រួច រក cos(θ) ជាទសភាគ។", hint: "Use sin²θ + cos²θ = 1, so cosθ = √(1 - 9/25).", khHint: "ប្រើ sin²θ + cos²θ = 1 ដូច្នេះ cosθ = √(1 - 9/25)។", answer: "0.8" },
   { id: 4, text: "For 2x² - 7x + 3 = 0, find the sum of the roots.", kh: "ចំពោះ 2x² - 7x + 3 = 0 រកផលបូកឫស។", hint: "By Vieta's formulas, the sum of roots is -b/a.", khHint: "តាមរូបមន្ត Vieta ផលបូកឫសគឺ -b/a។", answer: "3.5" },
-  { id: 5, text: "Given f(x) = x² - 4x + 1, find f(2) + f(5).", kh: "គេឲ្យ f(x) = x² - 4x + 1។ រក f(2) + f(5)។", hint: "Calculate f(2)=? and f(5)=? separately, then add them.", khHint: "គណនា f(2)=? និង f(5)=? ដាច់ដោយឡែក បន្ទាប់មកបូកចូលគ្នា។", answer: "3" }
+  { id: 5, text: "Given f(x) = x² - 4x + 1, find f(2) + f(5).", kh: "គេឲ្យ f(x) = x² - 4x + 1។ រក f(2) + f(5)។", hint: "Calculate f(2)=? and f(5)=? separately, then add them.", khHint: "គណនា f(2)=? និង f(5)=? ដាច់ដោយឡែក បន្ទាប់មកបូកចូលគ្នា។", answer: "3" },
+  { id: 6, text: "Solve: log3(x) + log3(x - 2) = 2. Find x.", kh: "ដោះស្រាយ៖ log3(x) + log3(x - 2) = 2។ រក x។", hint: "Combine the logs to get x(x - 2) = 9, then use x > 2.", khHint: "បូកលោការីតបាន x(x - 2) = 9 បន្ទាប់មកប្រើលក្ខខណ្ឌ x > 2។", answer: "5" },
+  { id: 7, text: "In an arithmetic sequence, a1 = 3 and d = 4. Find a10.", kh: "ក្នុងលំដាប់នព្វន្តមួយ a1 = 3 និង d = 4។ រក a10។", hint: "Use an = a1 + (n - 1)d.", khHint: "ប្រើរូបមន្ត an = a1 + (n - 1)d។", answer: "39" },
+  { id: 8, text: "Find the determinant of [[2, 3], [1, 4]].", kh: "រក determinant នៃម៉ាទ្រីស [[2, 3], [1, 4]]។", hint: "For [[a,b],[c,d]], the determinant is ad - bc.", khHint: "សម្រាប់ [[a,b],[c,d]] determinant គឺ ad - bc។", answer: "5" },
+  { id: 9, text: "A triangle has base 12 cm and height 7 cm. Find its area in cm².", kh: "ត្រីកោណមួយមានបាត 12 សង់ទីម៉ែត្រ និងកម្ពស់ 7 សង់ទីម៉ែត្រ។ រកផ្ទៃក្រឡាជា cm²។", hint: "Use area = 1/2 × base × height.", khHint: "ប្រើផ្ទៃក្រឡា = 1/2 × បាត × កម្ពស់។", answer: "42" },
+  { id: 10, text: "Two fair dice are rolled. What is the probability that their sum is 8? Give a fraction.", kh: "គេបោះគ្រាប់ឡុកឡាក់ស្មើគ្នា ២ គ្រាប់។ តើប្រូបាប៊ីលីតេដែលផលបូកស្មើ 8 ជាអ្វី? ឆ្លើយជាប្រភាគ។", hint: "There are 5 outcomes with sum 8 out of 36 total outcomes.", khHint: "មានលទ្ធផល 5 ដែលផលបូកស្មើ 8 ក្នុងចំណោមលទ្ធផលសរុប 36។", answer: "5/36" },
+  { id: 11, text: "If 2^(x + 1) = 32, find x.", kh: "ប្រសិនបើ 2^(x + 1) = 32 រក x។", hint: "Write 32 as 2^5 and compare the exponents.", khHint: "សរសេរ 32 ជា 2^5 រួចប្រៀបធៀបនិទស្សន្ត។", answer: "4" },
+  { id: 12, text: "The roots of x² - 5x + 6 = 0 are r and s. Find r × s.", kh: "ឫសនៃ x² - 5x + 6 = 0 គឺ r និង s។ រក r × s។", hint: "By Vieta's formulas, the product of the roots is c/a.", khHint: "តាមរូបមន្ត Vieta ផលគុណឫសគឺ c/a។", answer: "6" }
 ];
 
 const quiz2 = [
