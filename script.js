@@ -105,6 +105,8 @@ function toggleLanguage() {
 }
 
 function updateLanguage() {
+  document.documentElement.lang = language === "en" ? "en" : "km";
+
   const languageBtn = document.getElementById("languageBtn");
   if (languageBtn) {
     languageBtn.textContent = language === "en" ? "KH" : "EN";
