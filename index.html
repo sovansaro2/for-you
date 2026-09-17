@@ -10,8 +10,8 @@
 <button class="language-btn" id="languageBtn" type="button" onclick="toggleLanguage()">KH</button>
 
 <div class="card" id="intro">
-  <h1>If you solve all problems,<br>😍 I will be your boyfriend 😍</h1>
-  <div class="heart"><img src="heart-lock.svg" alt="Heart and lock"></div>
+  <h1>If you solve all problems,<br>🎁 You will receive a reward of your choice 🎁</h1>
+  <div class="heart"><img src="gift.svg" alt="Gift box"></div>
   <button class="btn btn-yes" onclick="startQuiz()">Start Quiz 1:</button>
   <button class="btn btn-no" id="btnNo">No</button>
 </div>
@@ -86,9 +86,14 @@
 </div>
 
 <div class="card hidden" id="success">
-  <h1>🎉 You are my boyfriend now! 🎉</h1>
-  <div class="heart"><img src="heart-lock.svg" alt="Heart and lock"></div>
-  <p style="color:#ffb3cd;font-size:20px">You solved them perfectly! True love is the best answer 💕</p>
+  <h1 id="successTitle">🎉 You earned your reward! 🎉</h1>
+  <div class="heart"><img src="gift.svg" alt="Gift box"></div>
+  <p class="reward-prompt" id="rewardPrompt">You answered every question correctly!</p>
+  <label class="reward-form" for="rewardInput">
+    <span id="rewardLabel">Write the reward you want:</span>
+    <textarea id="rewardInput" rows="3" placeholder="Write your reward here..."></textarea>
+  </label>
+  <button class="btn btn-yes reward-submit" id="rewardSubmit" type="button">Send to Telegram</button>
 </div>
 
 <p class="creator-credit" id="creatorCredit">Creator: SOVANSARO RIM RAVI</p>

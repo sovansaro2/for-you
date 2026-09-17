@@ -88,10 +88,15 @@ const translations = {
     incorrect: "Incorrect! You have {n} attempt(s) left. Hint: ",
     attemptsLeft: "{n} attempt(s) left out of 3",
     noAttempts: "No attempts left! Restarting from Problem 1...",
-    success: "You are my boyfriend now!",
-    solved: "You solved them perfectly! True love is the best answer 💕",
+    success: "You earned your reward!",
+    solved: "You solved every problem perfectly! 🎁",
+    rewardPrompt: "You answered every question correctly!",
+    rewardLabel: "Write the reward you want:",
+    rewardPlaceholder: "Write your reward here...",
+    rewardSubmit: "Send to Telegram",
+    rewardEmpty: "Please write the reward you want.",
     successTitle: "Success!",
-    finalMessage: "Actually, I have considered you my girlfriend for a long time; I just never told you.",
+    finalMessage: "You earned a reward of your choice. Congratulations!",
     failureTitle: "Try Again!",
     failureMessage: "You used all 3 attempts. The quiz will restart from Problem 1.",
     timeUp: "Time is up! Please try the quiz again.",
@@ -115,10 +120,15 @@ const translations = {
     empty: "សូមបញ្ចូលចម្លើយ។",
     incorrect: "មិនត្រឹមត្រូវ! អ្នកនៅសល់ឱកាស {n} ដង។ Hint៖ ",
     noAttempts: "អស់ឱកាសហើយ! កំពុងចាប់ផ្តើមពីលំហាត់ទី ១ វិញ...",
-    success: "សូមអភ័យទោស! បេះដូងមួយនេះបានអស់ស្តុកហើយ😒",
-    solved: "សូមសាកល្ងម្ដងទៀតនៅឆ្នាំក្រោយ😍",
+    success: "អ្នកទទួលបានរង្វាន់របស់អ្នកហើយ!",
+    solved: "អ្នកបានដោះស្រាយគ្រប់លំហាត់យ៉ាងល្អឥតខ្ចោះ! 🎁",
+    rewardPrompt: "អ្នកបានឆ្លើយសំណួរទាំងអស់ត្រឹមត្រូវហើយ",
+    rewardLabel: "សូមសរសេររង្វាន់ដែលអ្នកចង់បាន៖",
+    rewardPlaceholder: "សរសេររង្វាន់ដែលអ្នកចង់បាននៅទីនេះ...",
+    rewardSubmit: "បញ្ជូនទៅ Telegram",
+    rewardEmpty: "សូមសរសេររង្វាន់ដែលអ្នកចង់បានជាមុនសិន។",
     successTitle: "ជោគជ័យ!",
-    finalMessage: "តាមពិតទៅ ខ្ញុំបានចាត់ទុកអ្នកជាមិត្តស្រីរបស់ខ្ញុំយូរណាស់ហើយ គ្រាន់តែខ្ញុំមិនបានប្រាប់អ្នក",
+    finalMessage: "អ្នកនឹងទទួលបានរង្វាន់អ្វីម្យាងដែលអ្នកចង់បាន។ សូមអបអរសាទរ!",
     failureTitle: "សូមព្យាយាមម្ដងទៀត!",
     failureMessage: "អ្នកបានប្រើឱកាសទាំង ៣ អស់ហើយ។ Quiz នឹងចាប់ផ្ដើមពីលំហាត់ទី ១ វិញ។",
     timeUp: "អស់ពេលហើយ! សូមព្យាយាម Quiz ម្ដងទៀត។",
@@ -155,8 +165,8 @@ function updateLanguage() {
   const introHeading = document.querySelector("#intro h1");
   if (introHeading) {
     introHeading.innerHTML = language === "en"
-      ? "If you solve all problems,<br>😍 I will be your boyfriend 😍"
-      : "ប្រសិនបើអ្នកដោះស្រាយលំហាត់ទាំងអស់បាន<br>😍 ខ្ញុំនឹងក្លាយជាសង្សាររបស់អ្នក 😍";
+      ? "If you solve all problems,<br>🎁 You will receive a reward of your choice 🎁"
+      : "ប្រសិនបើអ្នកដោះស្រាយលំហាត់ទាំងអស់បាន<br>អ្នកនឹងទទួលបានរង្វាន់អ្វីម្យាងដែលអ្នកចង់បាន";
   }
 
   const startButton = document.querySelector(".btn-yes");
@@ -195,7 +205,16 @@ function updateLanguage() {
   if (successTitle) successTitle.textContent = "🎉 " + tr("success") + " 🎉";
 
   const successText = document.querySelector("#success p");
-  if (successText) successText.textContent = tr("solved");
+  if (successText) successText.textContent = tr("rewardPrompt");
+
+  const rewardLabel = document.getElementById("rewardLabel");
+  if (rewardLabel) rewardLabel.textContent = tr("rewardLabel");
+
+  const rewardInput = document.getElementById("rewardInput");
+  if (rewardInput) rewardInput.placeholder = tr("rewardPlaceholder");
+
+  const rewardSubmit = document.getElementById("rewardSubmit");
+  if (rewardSubmit) rewardSubmit.textContent = tr("rewardSubmit");
 
   const resultClose = document.getElementById("resultClose");
   if (resultClose) resultClose.setAttribute("aria-label", tr("close"));
@@ -299,8 +318,8 @@ function showResult(success, messageKey) {
 
   if (resultIcon) {
     resultIcon.innerHTML = success
-      ? "<img src='heart-lock.svg' alt='Success'>"
-      : "<img src='heart-lock.svg' alt='Try again'>";
+      ? "<img src='gift.svg' alt='Reward'>"
+      : "<img src='gift.svg' alt='Try again'>";
   }
 
   if (resultTitle) {
@@ -657,7 +676,7 @@ function celebrate() {
   for (let i = 0; i < 8; i += 1) {
     const heart = document.createElement("img");
     heart.className = "celebration-heart";
-    heart.src = "heart-lock.svg";
+    heart.src = "gift.svg";
     heart.alt = "";
     heart.style.left = (12 + Math.random() * 76) + "%";
     heart.style.top = (45 + Math.random() * 20) + "%";
@@ -690,6 +709,18 @@ function finish() {
   if (quizNext) quizNext.classList.remove("hidden");
 }
 
+function sendReward() {
+  const rewardInput = document.getElementById("rewardInput");
+  if (!rewardInput || !rewardInput.value.trim()) {
+    alert(tr("rewardEmpty"));
+    if (rewardInput) rewardInput.focus();
+    return;
+  }
+
+  const message = "ខ្ញុំចង់បានរង្វាន់៖ " + rewardInput.value.trim();
+  window.open("https://t.me/sovansaro?text=" + encodeURIComponent(message), "_blank", "noopener");
+}
+
 const submitButton = document.getElementById("submitBtn");
 if (submitButton) {
   submitButton.addEventListener("click", checkAns);
@@ -713,6 +744,11 @@ if (quiz2NextButton) {
 const nextQuiz2Button = document.getElementById("nextQuiz2Button");
 if (nextQuiz2Button) {
   nextQuiz2Button.addEventListener("click", startQuiz2);
+}
+
+const rewardSubmit = document.getElementById("rewardSubmit");
+if (rewardSubmit) {
+  rewardSubmit.addEventListener("click", sendReward);
 }
 
 updateLanguage();

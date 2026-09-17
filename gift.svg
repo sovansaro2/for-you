@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" role="img" aria-labelledby="title desc">
+  <title id="title">Gift box</title>
+  <desc id="desc">A pink gift box with a ribbon</desc>
+  <defs>
+    <linearGradient id="box" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8fbd"/>
+      <stop offset="1" stop-color="#ff4e8e"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb7d2"/>
+      <stop offset="1" stop-color="#ff78ad"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="160" cy="257" rx="112" ry="13" fill="#160d2d" opacity=".28"/>
+  <path d="M54 112h212v126a16 16 0 0 1-16 16H70a16 16 0 0 1-16-16V112Z" fill="url(#box)"/>
+  <rect x="42" y="91" width="236" height="48" rx="12" fill="url(#lid)"/>
+  <rect x="143" y="91" width="34" height="163" fill="#ffe0eb"/>
+  <rect x="54" y="126" width="212" height="27" fill="#ff71a8" opacity=".7"/>
+  <path d="M160 94c-28-5-61-22-54-48 5-19 27-22 42-8 12 11 12 31 12 56Zm0 0c28-5 61-22 54-48-5-19-27-22-42-8-12 11-12 31-12 56Z" fill="#ffcc66"/>
+  <path d="M160 94c-10-20-10-43 0-61 10 18 10 41 0 61Z" fill="#fff0a8"/>
+  <rect x="42" y="91" width="236" height="48" rx="12" fill="none" stroke="#ffd1e1" stroke-width="4"/>
+</svg>

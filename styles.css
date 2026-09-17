@@ -4,7 +4,7 @@ body{min-height:100vh;background:linear-gradient(135deg,#1a0b2e,#2d1b4e,#0f0c29)
 .hidden{display:none!important}
 .language-btn{position:fixed;top:18px;right:20px;z-index:10000;padding:9px 16px;border:1px solid #ff8fb8;border-radius:20px;background:rgba(255,143,184,.16);color:#ffb3cd;font:500 15px 'Rajdhani',sans-serif;cursor:pointer}
 .language-btn:hover{background:#ff4e8e;color:#fff}
-.creator-credit{position:fixed;right:20px;bottom:16px;color:#ffb3cd;font-size:13px;letter-spacing:.04em;text-align:right}
+.creator-credit{position:fixed;right:20px;bottom:16px;color:#ffb3cd;font-family:'Khmer OS Koulen','Koulen','Segoe UI',sans-serif;font-size:15px;letter-spacing:0;line-height:1.5;text-align:right}
 .card{background:rgba(255,255,255,.08);backdrop-filter:blur(15px);border:1px solid rgba(255,150,200,.3);border-radius:24px;padding:50px 40px;text-align:center;max-width:700px;width:100%;box-shadow:none}
 h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;font-size:26px;line-height:1.8;margin-bottom:25px}
 .heart{margin:10px 0 25px;animation:beat 1.2s infinite}.heart img{display:block;width:260px;max-width:100%;height:auto;margin:auto}
@@ -14,6 +14,11 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
 .btn-quiz2{background:rgba(255,204,102,.18);border:1px solid #ffcc66;color:#ffdf99}
 .btn-no{background:#333;color:#aaa}
 .quiz-next-text{color:#f0d7e2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:20px;margin-bottom:18px}
+.reward-prompt{color:#ffb3cd;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:20px;line-height:1.6;margin-bottom:16px}
+.reward-form{display:block;color:#f0d7e2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:16px;text-align:left}
+.reward-form textarea{display:block;width:100%;margin-top:8px;padding:12px 14px;border:2px solid #ff8fb8;border-radius:12px;background:rgba(255,255,255,.92);color:#30204d;font:500 16px 'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;line-height:1.5;resize:vertical;outline:none}
+.reward-form textarea:focus{box-shadow:0 0 0 3px rgba(255,143,184,.22)}
+.reward-submit{margin-top:16px}
 .quiz2-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .quiz2-progress{color:#ffcc66;font:600 16px Consolas,monospace}
 .quiz2-title{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;font-size:26px;margin-bottom:20px}
@@ -89,7 +94,10 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
   body{padding:14px}
   .card{padding:22px 14px 18px;border-radius:18px}
   .language-btn{top:12px;right:12px;padding:8px 12px;font-size:13px}
-  .creator-credit{right:14px;bottom:10px;font-size:11px}
+  .creator-credit{right:14px;bottom:10px;font-size:13px}
+  .reward-prompt{font-size:17px}
+  .reward-form{font-size:14px}
+  .reward-form textarea{font-size:14px}
   .quiz2-title{font-size:21px}
   .quiz2-question{font-size:17px}
   .quiz2-option{font-size:14px;padding:11px 12px}
