@@ -30,16 +30,18 @@ h1{color:#ff8fb8;font-size:26px;line-height:1.8;margin-bottom:25px}
 .ai-confirm input{width:17px;height:17px;accent-color:#ff4e8e;cursor:pointer}
 .attempts{margin-top:10px;color:#ffcc66;font-size:15px;min-height:24px}
 .ok{color:#3fb950!important}.bad{color:#ff5252!important}
-.quiz-top{position:relative;display:flex;justify-content:center;align-items:center;margin:0 0 15px}
-.prog{display:flex;gap:8px;justify-content:center}
-.timer{position:absolute;left:0;min-width:68px;padding:5px 9px;border:1px solid #ff8fb8;border-radius:14px;color:#ffcc66;background:rgba(255,143,184,.12);font:600 15px Consolas,monospace;text-align:center}
+.quiz-top{position:relative;display:flex;align-items:center;gap:12px;margin:0 0 15px;padding:4px 0}
+.prog{display:flex;gap:8px;justify-content:center;flex:1;min-width:120px;padding:0 8px}
+.timer{position:static;min-width:68px;padding:5px 9px;border:1px solid #ff8fb8;border-radius:14px;color:#ffcc66;background:rgba(255,143,184,.12);font:600 15px Consolas,monospace;text-align:center;box-shadow:0 0 12px rgba(255,143,184,.15)}
 .timer.warning{color:#ff5252;border-color:#ff5252;animation:timerPulse 1s infinite}
 @keyframes timerPulse{50%{opacity:.55}}
 .step{width:40px;height:8px;border-radius:6px;background:#444}
 .step.done{background:#8d5b91}
 .step.on{background:#ff4e8e;box-shadow:0 0 10px #ff4e8e}
-.info-btn{position:absolute;right:0;width:30px;height:30px;border:1px solid #ff8fb8;border-radius:50%;background:rgba(255,143,184,.15);color:#ffb3cd;font-size:18px;font-weight:700;cursor:pointer}
+.info-btn{width:30px;height:30px;border:1px solid #ff8fb8;border-radius:50%;background:rgba(255,143,184,.15);color:#ffb3cd;font-size:18px;font-weight:700;cursor:pointer;box-shadow:0 0 10px rgba(255,143,184,.12)}
 .info-btn:hover{background:#ff4e8e;color:#fff}
+.exit-btn{padding:8px 13px;border:1px solid #ff8fb8;border-radius:14px;background:rgba(255,143,184,.12);color:#ffb3cd;font:600 14px 'Rajdhani',sans-serif;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 0 10px rgba(255,143,184,.12)}
+.exit-btn:hover{background:#ff4e8e;color:#fff}
 .info-modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:20px;z-index:9998}
 .info-box{position:relative;max-width:460px;width:100%;padding:30px;text-align:left;color:#f8f8f2;background:#30204d;border:1px solid rgba(255,150,200,.5);border-radius:18px;box-shadow:0 0 35px rgba(255,50,120,.35)}
 .info-box h2{margin-bottom:15px;color:#ff8fb8;text-align:center}
@@ -63,4 +65,26 @@ h1{color:#ff8fb8;font-size:26px;line-height:1.8;margin-bottom:25px}
 @keyframes sparkle{0%{transform:scale(.35) rotate(0);opacity:0}100%{transform:scale(1.4) rotate(90deg);opacity:1}}
 #warn{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;z-index:9999}
 #warn div{color:#ff5252;font-size:22px;text-align:center}
-@media(max-width:600px){.card{padding:35px 20px}.abox{flex-direction:column}.abox button{width:100%}.term .problem-text{font-size:18px}.language-btn{top:12px;right:12px}}
+@media(max-width:600px){
+  body{padding:14px}
+  .card{padding:22px 14px 18px;border-radius:18px}
+  .language-btn{top:12px;right:12px;padding:8px 12px;font-size:13px}
+  .quiz-top{gap:8px;align-items:center;flex-wrap:wrap}
+  .prog{order:2;flex-basis:100%;padding:0 4px}
+  .timer{min-width:60px;font-size:13px;padding:6px 8px}
+  .info-btn,.exit-btn{margin-left:auto}
+  .exit-btn{padding:7px 10px;font-size:12px}
+  .bar{padding:8px 10px}
+  .ttitle{font-size:11px;letter-spacing:.02em}
+  .term{padding:16px 14px;min-height:110px;font-size:14px;line-height:1.7}
+  .term .loading{font-size:12px;margin-bottom:10px;padding-bottom:8px}
+  .term .problem-label{font-size:12px;margin-bottom:4px}
+  .term .problem-text{font-size:17px;padding:12px 10px;line-height:1.5}
+  .abox{margin-top:16px;gap:8px}
+  .abox input{font-size:16px;padding:12px 14px}
+  .abox button{padding:13px 18px;font-size:15px}
+  .ai-confirm{font-size:13px;line-height:1.4;align-items:flex-start;text-align:left}
+  .status{padding:10px 12px;font-size:14px;min-height:42px}
+  .attempts{font-size:14px}
+  h1{font-size:20px;line-height:1.5}
+}
