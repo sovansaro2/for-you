@@ -91,8 +91,8 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
 #warn{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;z-index:9999}
 #warn div{color:#ff5252;font-size:22px;text-align:center}
 @media(max-width:600px){
-  body{padding:14px}
-  .card{padding:22px 14px 18px;border-radius:18px}
+  body{padding:10px;overflow-x:hidden}
+  .card{padding:22px 12px 18px;border-radius:18px;max-width:100%;min-width:0}
   .language-btn{top:12px;right:12px;padding:8px 12px;font-size:13px}
   .creator-credit{right:14px;bottom:10px;font-size:13px}
   .reward-prompt{font-size:17px}
@@ -102,10 +102,13 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
   .quiz2-question{font-size:17px}
   .quiz2-option{font-size:14px;padding:11px 12px}
   .quiz2-feedback{font-size:13px}
-  .quiz-top{gap:8px;align-items:center;flex-wrap:wrap}
-  .prog{order:2;flex-basis:100%;padding:0 4px}
+  .quiz-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;margin-bottom:12px}
+  .quiz-top .timer{justify-self:start}
+  .quiz-top .info-btn{justify-self:center}
+  .quiz-top .exit-btn{justify-self:end}
+  .prog{grid-column:1 / -1;grid-row:2;width:100%;padding:0 4px;order:0}
   .timer{min-width:60px;font-size:13px;padding:6px 8px}
-  .info-btn,.exit-btn{margin-left:auto}
+  .info-btn,.exit-btn{margin-left:0}
   .exit-btn{padding:7px 10px;font-size:12px}
   .bar{padding:8px 10px}
   .ttitle{font-size:11px;letter-spacing:.02em}
@@ -113,9 +116,11 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
   .term .loading{font-size:12px;margin-bottom:10px;padding-bottom:8px}
   .term .problem-label{font-size:12px;margin-bottom:4px}
   .term .problem-text{font-size:17px;padding:12px 10px;line-height:1.5}
-  .abox{margin-top:16px;gap:8px}
-  .abox input{font-size:16px;padding:12px 14px}
-  .abox button{padding:13px 18px;font-size:15px}
+  .abox{margin-top:16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+  .abox input{grid-column:1 / -1;grid-row:1;width:100%;min-width:0;font-size:16px;padding:12px 14px}
+  .abox button{width:100%;min-width:0;padding:13px 10px;font-size:15px}
+  .abox .back-btn{grid-column:1;grid-row:2}
+  .abox button:not(.back-btn){grid-column:2;grid-row:2}
   .ai-confirm{font-size:13px;line-height:1.4;align-items:flex-start;text-align:left}
   .status{padding:10px 12px;font-size:14px;min-height:42px}
   .attempts{font-size:14px}
