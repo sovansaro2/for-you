@@ -15,6 +15,10 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
 .btn-no{background:#333;color:#aaa}
 .quiz-next-text{color:#f0d7e2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:20px;margin-bottom:18px}
 .reward-prompt{color:#ffb3cd;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:20px;line-height:1.6;margin-bottom:16px}
+.answer-summary{max-height:220px;overflow-y:auto;margin:12px 0 16px;padding:12px;text-align:left;background:rgba(0,0,0,.18);border:1px solid rgba(255,143,184,.3);border-radius:10px;color:#f0d7e2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif}
+.answer-summary h3{margin-bottom:8px;color:#ffcc66;font-family:'Khmer OS Koulen','Koulen',sans-serif;font-size:18px}
+.answer-summary-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:4px 6px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px;line-height:1.45}
+.answer-summary-item:last-child{border-bottom:0}.answer-summary-item b{grid-column:2;color:#9be7a5;font-weight:600}
 .reward-form{display:block;color:#f0d7e2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:16px;text-align:left}
 .reward-form textarea{display:block;width:100%;margin-top:8px;padding:12px 14px;border:2px solid #ff8fb8;border-radius:12px;background:rgba(255,255,255,.92);color:#30204d;font:500 16px 'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;line-height:1.5;resize:vertical;outline:none}
 .reward-form textarea:focus{box-shadow:0 0 0 3px rgba(255,143,184,.22)}

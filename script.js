@@ -223,6 +223,8 @@ let tries = 3;
 let isAnswerLocked = false;
 let quiz2Cur = 0;
 let quiz2Answered = false;
+let quiz1Answers = [];
+let quiz2Answers = [];
 const MAXTRIES = 3;
 const QUESTION_MINUTES = 3;
 let remainingSeconds = QUESTION_MINUTES * 60;
@@ -382,6 +384,7 @@ function startQuiz() {
 
   shuffle(problems);
   activeQuiz = 1;
+  quiz1Answers = [];
   cur = 0;
   drawProg();
   render();
@@ -402,6 +405,7 @@ function startQuiz2() {
   if (quiz2) quiz2.classList.remove("hidden");
   shuffle(quiz2Questions);
   activeQuiz = 2;
+  quiz2Answers = [];
   quiz2Cur = 0;
   renderQuiz2();
 }
@@ -480,6 +484,7 @@ async function answerQuiz2(index, selectedButton) {
   const result = await response.json();
   if (result.correct) {
     quiz2Answered = true;
+    quiz2Answers.push({ question: question.question, answer: question.options[index] });
     selectedButton.classList.add("correct");
     if (feedback) {
       feedback.className = "quiz2-feedback correct";
@@ -505,11 +510,7 @@ function nextQuiz2() {
   if (!quiz2Answered) return;
   quiz2Cur += 1;
   if (quiz2Cur >= quiz2Questions.length) {
-    const quiz2 = document.getElementById("quiz2");
-    const success = document.getElementById("success");
-    if (quiz2) quiz2.classList.add("hidden");
-    if (success) success.classList.remove("hidden");
-    celebrate();
+    finishAllQuizzes();
     return;
   }
   renderQuiz2();
@@ -608,6 +609,10 @@ async function checkAns() {
 
   if (result.correct) {
     isAnswerLocked = true;
+    quiz1Answers.push({
+      question: language === "kh" ? problems[cur].kh : problems[cur].text,
+      answer: value
+    });
     s.className = "status ok";
     s.textContent = tr("correct");
     showResult(true);
@@ -748,7 +753,55 @@ function finish() {
   if (quizNext) quizNext.classList.remove("hidden");
 }
 
-function sendReward() {
+function finishAllQuizzes() {
+  clearInterval(timerId);
+  activeQuiz = 0;
+  const quiz2 = document.getElementById("quiz2");
+  const success = document.getElementById("success");
+  if (quiz2) quiz2.classList.add("hidden");
+  if (success) success.classList.remove("hidden");
+  renderAnswerSummary();
+  sendQuizResults();
+  celebrate();
+}
+
+function renderAnswerSummary() {
+  const summary = document.getElementById("answerSummary");
+  if (!summary) return;
+
+  const answers = quiz1Answers.concat(quiz2Answers);
+  summary.innerHTML = "<h3>ចម្លើយរបស់អ្នក</h3>" + answers.map(function (item, index) {
+    return "<div class='answer-summary-item'><strong>" + (index + 1) + ".</strong> <span>" + escapeHtml(item.question) + "</span><b>" + escapeHtml(item.answer) + "</b></div>";
+  }).join("");
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>\"']/g, function (character) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[character];
+  });
+}
+
+async function sendQuizResults() {
+  const answers = quiz1Answers.concat(quiz2Answers);
+  const status = document.getElementById("rewardPrompt");
+  try {
+    const response = await fetch("/api/quiz-results", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ answers })
+    });
+    const result = await response.json();
+    if (status && result.sent) status.textContent = language === "kh"
+      ? "អ្នកបានឆ្លើយសំណួរទាំងអស់ត្រឹមត្រូវហើយ។ ចម្លើយត្រូវបានផ្ញើទៅ Telegram រួចរាល់។"
+      : "You answered every question correctly. Your answers were sent to Telegram.";
+  } catch (error) {
+    if (status) status.textContent = language === "kh"
+      ? "អ្នកបានឆ្លើយសំណួរទាំងអស់ត្រឹមត្រូវហើយ។"
+      : "You answered every question correctly.";
+  }
+}
+
+async function sendReward() {
   const rewardInput = document.getElementById("rewardInput");
   if (!rewardInput || !rewardInput.value.trim()) {
     alert(tr("rewardEmpty"));
@@ -756,8 +809,26 @@ function sendReward() {
     return;
   }
 
-  const message = "ខ្ញុំចង់បានរង្វាន់៖ " + rewardInput.value.trim();
-  window.open("https://t.me/sovansaro?text=" + encodeURIComponent(message), "_blank", "noopener");
+  const rewardSubmit = document.getElementById("rewardSubmit");
+  if (rewardSubmit) rewardSubmit.disabled = true;
+  try {
+    const response = await fetch("/api/reward-request", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        reward: rewardInput.value.trim(),
+        answers: quiz1Answers.concat(quiz2Answers)
+      })
+    });
+    const result = await response.json();
+    if (!response.ok || !result.sent) throw new Error("Reward request was not sent");
+    rewardInput.value = "";
+    rewardInput.placeholder = language === "kh" ? "បានផ្ញើទៅ Telegram រួចរាល់" : "Sent to Telegram";
+  } catch (error) {
+    alert(language === "kh" ? "មិនអាចផ្ញើសារទៅ Telegram បានទេ។ សូមពិនិត្យ Server configuration។" : "Could not send the message to Telegram. Check the server configuration.");
+  } finally {
+    if (rewardSubmit) rewardSubmit.disabled = false;
+  }
 }
 
 const submitButton = document.getElementById("submitBtn");

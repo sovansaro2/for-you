@@ -1,9 +1,12 @@
 const http = require("http");
+const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
 const PORT = process.env.PORT || 3000;
 const root = __dirname;
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 const quiz1 = [
   { id: 1, text: "Solve: log2(x) + log2(x - 2) = 3. Find x.", kh: "ដោះស្រាយ៖ log2(x) + log2(x - 2) = 3។ រក x។", hint: "Combine logs: log2[x(x-2)] = 3, then solve x²-2x=8. Remember x > 2.", khHint: "បូកលោការីត៖ log2[x(x-2)] = 3 បន្ទាប់មកដោះស្រាយ x²-2x=8។ ចងចាំថា x > 2។", answer: "4" },
@@ -76,6 +79,33 @@ function readBody(request) {
   });
 }
 
+function sendTelegramMessage(message) {
+  return new Promise((resolve, reject) => {
+    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+      reject(new Error("Telegram environment variables are not configured"));
+      return;
+    }
+
+    const payload = JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message });
+    const telegramRequest = https.request({
+      hostname: "api.telegram.org",
+      path: "/bot" + TELEGRAM_BOT_TOKEN + "/sendMessage",
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(payload) }
+    }, telegramResponse => {
+      let responseBody = "";
+      telegramResponse.on("data", chunk => { responseBody += chunk; });
+      telegramResponse.on("end", () => {
+        if (telegramResponse.statusCode >= 200 && telegramResponse.statusCode < 300) resolve();
+        else reject(new Error("Telegram rejected the message: " + responseBody));
+      });
+    });
+    telegramRequest.on("error", reject);
+    telegramRequest.write(payload);
+    telegramRequest.end();
+  });
+}
+
 const server = http.createServer(async (request, response) => {
   try {
     if (request.method === "GET" && request.url === "/api/quiz1/questions") return sendJson(response, 200, publicQuiz1());
@@ -95,6 +125,34 @@ const server = http.createServer(async (request, response) => {
       if (!question) return sendJson(response, 404, { error: "Question not found" });
       const correct = Number(body.answerIndex) === question.correctAnswerIndex;
       return sendJson(response, 200, { correct, explanation: correct ? question.explanation : null });
+    }
+
+    if (request.method === "POST" && request.url === "/api/quiz-results") {
+      const body = await readBody(request);
+      if (!Array.isArray(body.answers) || body.answers.length === 0 || body.answers.length > 20) {
+        return sendJson(response, 400, { error: "Invalid answer summary" });
+      }
+      const message = ["Quiz completed", "", ...body.answers.map((item, index) => (index + 1) + ". " + String(item.question || "") + "\nAnswer: " + String(item.answer || ""))].join("\n");
+      await sendTelegramMessage(message);
+      return sendJson(response, 200, { sent: true });
+    }
+
+    if (request.method === "POST" && request.url === "/api/reward-request") {
+      const body = await readBody(request);
+      const reward = String(body.reward || "").trim();
+      if (!reward || reward.length > 1000) return sendJson(response, 400, { error: "Invalid reward request" });
+      const answers = Array.isArray(body.answers) ? body.answers : [];
+      const message = [
+        "Reward request",
+        "",
+        "Requested reward:",
+        reward,
+        "",
+        "Quiz answers:",
+        ...answers.slice(0, 20).map((item, index) => (index + 1) + ". " + String(item.question || "") + "\nAnswer: " + String(item.answer || ""))
+      ].join("\n");
+      await sendTelegramMessage(message);
+      return sendJson(response, 200, { sent: true });
     }
 
     if (request.method === "GET") return publicFile(request, response);
