@@ -62,7 +62,8 @@ const translations = {
     failureTitle: "Try Again!",
     failureMessage: "You used all 3 attempts. The quiz will restart from Problem 1.",
     timeUp: "Time is up! Please try the quiz again.",
-    close: "Close"
+    close: "Close",
+    exit: "Exit"
   },
   kh: {
     start: "ចាប់ផ្តើម Quiz",
@@ -88,7 +89,8 @@ const translations = {
     failureTitle: "សូមព្យាយាមម្ដងទៀត!",
     failureMessage: "អ្នកបានប្រើឱកាសទាំង ៣ អស់ហើយ។ Quiz នឹងចាប់ផ្ដើមពីលំហាត់ទី ១ វិញ។",
     timeUp: "អស់ពេលហើយ! សូមព្យាយាម Quiz ម្ដងទៀត។",
-    close: "បិទ"
+    close: "បិទ",
+    exit: "ចាកចេញ"
   }
 };
 
@@ -155,6 +157,9 @@ function updateLanguage() {
 
   const resultClose = document.getElementById("resultClose");
   if (resultClose) resultClose.setAttribute("aria-label", tr("close"));
+
+  const exitButton = document.getElementById("exitBtn");
+  if (exitButton) exitButton.textContent = tr("exit");
 
   if (document.getElementById("quiz") && !document.getElementById("quiz").classList.contains("hidden")) {
     render();
@@ -309,6 +314,20 @@ function startQuiz() {
   drawProg();
   render();
   startTimer();
+}
+
+function exitQuiz() {
+  clearInterval(timerId);
+  const quiz = document.getElementById("quiz");
+  const intro = document.getElementById("intro");
+  const success = document.getElementById("success");
+  if (quiz) quiz.classList.add("hidden");
+  if (success) success.classList.add("hidden");
+  if (intro) intro.classList.remove("hidden");
+  cur = 0;
+  drawProg();
+  if (document.getElementById("status")) document.getElementById("status").textContent = "";
+  if (document.getElementById("resultModal")) document.getElementById("resultModal").classList.add("hidden");
 }
 
 function goBack() {
@@ -534,6 +553,11 @@ function finish() {
 const submitButton = document.getElementById("submitBtn");
 if (submitButton) {
   submitButton.addEventListener("click", checkAns);
+}
+
+const exitButton = document.getElementById("exitBtn");
+if (exitButton) {
+  exitButton.addEventListener("click", exitQuiz);
 }
 
 updateLanguage();
