@@ -11,7 +11,24 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
 @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 .btn{padding:14px 34px;border:none;border-radius:30px;font-size:17px;cursor:pointer;margin:8px;font-family:inherit}
 .btn-yes{background:linear-gradient(135deg,#ff4e8e,#ff8fb8);color:#fff}
+.btn-quiz2{background:rgba(255,204,102,.18);border:1px solid #ffcc66;color:#ffdf99}
 .btn-no{background:#333;color:#aaa}
+.quiz-next-text{color:#f0d7e2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:20px;margin-bottom:18px}
+.quiz2-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.quiz2-progress{color:#ffcc66;font:600 16px Consolas,monospace}
+.quiz2-title{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;font-size:26px;margin-bottom:20px}
+.quiz2-question{color:#f8f8f2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:20px;line-height:1.7;margin-bottom:20px;text-align:left}
+.quiz2-options{display:grid;gap:10px;text-align:left}
+.quiz2-option{padding:13px 16px;border:1px solid rgba(255,143,184,.55);border-radius:10px;background:rgba(255,255,255,.07);color:#f0d7e2;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:16px;line-height:1.5;text-align:left;cursor:pointer}
+.quiz2-option:hover:not(:disabled){background:rgba(255,78,142,.2);border-color:#ff8fb8}
+.quiz2-option.correct{background:rgba(63,185,80,.22);border-color:#3fb950;color:#b7f5c0}
+.quiz2-option.incorrect{background:rgba(255,82,82,.18);border-color:#ff5252;color:#ffb3b3}
+.quiz2-option:disabled{cursor:not-allowed}
+.quiz2-feedback{min-height:56px;margin-top:16px;color:#ffb3cd;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:15px;line-height:1.6;text-align:left}
+.quiz2-feedback.correct{color:#9be7a5}
+.quiz2-feedback.incorrect{color:#ff9b9b}
+.quiz2-next{padding:12px 28px;border:0;border-radius:12px;background:linear-gradient(135deg,#ff4e8e,#ff8fb8);color:#fff;font-family:'Khmer OS Battambang','Battambang','Segoe UI',sans-serif;font-size:16px;cursor:pointer}
+.quiz2-next:disabled{opacity:.45;cursor:not-allowed}
 .terminal{background:#0d1117;border-radius:14px;border:1px solid #30363d;overflow:hidden;text-align:left}
 .bar{background:#161b22;padding:10px 16px;display:flex;align-items:center;gap:8px}
 .dot{width:13px;height:13px;border-radius:50%}
@@ -73,6 +90,10 @@ h1{color:#ff8fb8;font-family:'Khmer OS Koulen','Koulen','Rajdhani',sans-serif;fo
   .card{padding:22px 14px 18px;border-radius:18px}
   .language-btn{top:12px;right:12px;padding:8px 12px;font-size:13px}
   .creator-credit{right:14px;bottom:10px;font-size:11px}
+  .quiz2-title{font-size:21px}
+  .quiz2-question{font-size:17px}
+  .quiz2-option{font-size:14px;padding:11px 12px}
+  .quiz2-feedback{font-size:13px}
   .quiz-top{gap:8px;align-items:center;flex-wrap:wrap}
   .prog{order:2;flex-basis:100%;padding:0 4px}
   .timer{min-width:60px;font-size:13px;padding:6px 8px}

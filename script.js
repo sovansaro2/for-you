@@ -36,10 +36,43 @@ const problems = [
   }
 ];
 
+const quiz2Questions = [
+  {
+    question: "តើព្រះសិទ្ធត្ថទ្រង់ប្រសូតនៅទីកន្លែងណា?",
+    options: ["ពុទ្ធគយា (Bodh Gaya)", "ឧទ្យានលុម្ពិនី (Lumbini Park)", "ព្រៃឥសិបតនមិគទាយវ័ន (Sarnath)", "ក្រុងកុសិនារា (Kushinagar)"],
+    correctAnswerIndex: 1,
+    explanation: "ព្រះសិទ្ធត្ថទ្រង់ប្រសូតនៅឧទ្យានលុម្ពិនី (បច្ចុប្បន្នស្ថិតក្នុងប្រទេសនេប៉ាល់)។"
+  },
+  {
+    question: "តើព្រះនាមដើមកាលព្រះអង្គនៅជាព្រះរាជបុត្រមានឈ្មោះអ្វី?",
+    options: ["សិទ្ធត្ថ (Siddhartha)", "អានន្ទ (Ananda)", "រាហុល (Rahula)", "ទេវទត្ត (Devadatta)"],
+    correctAnswerIndex: 0,
+    explanation: "ព្រះនាមដើមរបស់ព្រះអង្គគឺ សិទ្ធត្ថ គោតម។"
+  },
+  {
+    question: "តើព្រះសមណគោតមទ្រង់បានត្រាស់ដឹងជាព្រះពុទ្ធនៅក្រោមដើមឈើអ្វី?",
+    options: ["ដើមជ្រៃ", "ដើមរាំង", "ដើមពោធិព្រឹក្ស (Bodhi Tree)", "ដើមចំប៉ី"],
+    correctAnswerIndex: 2,
+    explanation: "ព្រះអង្គទ្រង់ត្រាស់ដឹងនូវអនុត្តរសម្មាសម្ពោធិញាណ នៅក្រោមគល់ដើមពោធិព្រឹក្ស នាពុទ្ធគយា។"
+  },
+  {
+    question: "តើធម្មទេសនាលើកដំបូងបង្អស់របស់ព្រះពុទ្ធមានឈ្មោះថាអ្វី?",
+    options: ["មង្គលសូត្រ", "ធម្មចក្កប្បវត្តនសូត្រ (Dhammacakkappavattana Sutta)", "មេត្តាសូត្រ", "រតនសូត្រ"],
+    correctAnswerIndex: 1,
+    explanation: "ធម្មចក្កប្បវត្តនសូត្រ គឺជាបឋមទេសនាដែលទ្រង់ប្រោសបញ្ចវគ្គិយភិក្ខុទាំង ៥ អង្គ។"
+  },
+  {
+    question: "តើព្រះពុទ្ធទ្រង់យាងចូលបរិនិព្វាននៅទីកន្លែងណា?",
+    options: ["ក្រុងកុសិនារា (Kushinagar)", "ក្រុងរាជគ្រឹះ (Rajgir)", "ក្រុងវេសាលី (Vaishali)", "ក្រុងកបិលព័ស្ដុ (Kapilavastu)"],
+    correctAnswerIndex: 0,
+    explanation: "ព្រះពុទ្ធទ្រង់យាងរំលត់ខន្ធចូលកាន់បរិនិព្វាននៅក្រោមដើមសាលព្រឹក្សទាំងគូ ក្នុងក្រុងកុសិនារា។"
+  }
+];
+
 let language = "en";
 const translations = {
   en: {
-    start: "Start Quiz",
+    start: "Start Quiz 1:",
     no: "No",
     submit: "Submit",
     answer: "Enter your answer here...",
@@ -66,7 +99,7 @@ const translations = {
     exit: "Exit"
   },
   kh: {
-    start: "ចាប់ផ្តើម Quiz",
+    start: "ចាប់ផ្តើម Quiz 1៖",
     no: "ទេ",
     submit: "បញ្ជូន",
     answer: "បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...",
@@ -122,8 +155,8 @@ function updateLanguage() {
   const introHeading = document.querySelector("#intro h1");
   if (introHeading) {
     introHeading.innerHTML = language === "en"
-      ? "If you solve all 5 problems,<br>😍 I will be your boyfriend 😍"
-      : "ប្រសិនបើអ្នកដោះស្រាយលំហាត់ទាំង ៥ បាន<br>😍 ខ្ញុំនឹងក្លាយជាសង្សាររបស់អ្នក 😍";
+      ? "If you solve all problems,<br>😍 I will be your boyfriend 😍"
+      : "ប្រសិនបើអ្នកដោះស្រាយលំហាត់ទាំងអស់បាន<br>😍 ខ្ញុំនឹងក្លាយជាសង្សាររបស់អ្នក 😍";
   }
 
   const startButton = document.querySelector(".btn-yes");
@@ -179,6 +212,8 @@ function updateLanguage() {
 let cur = 0;
 let tries = 3;
 let isAnswerLocked = false;
+let quiz2Cur = 0;
+let quiz2Answered = false;
 const MAXTRIES = 3;
 const QUIZ_MINUTES = 10;
 let remainingSeconds = QUIZ_MINUTES * 60;
@@ -326,6 +361,22 @@ function startQuiz() {
   startTimer();
 }
 
+function startQuiz2() {
+  const intro = document.getElementById("intro");
+  const quiz = document.getElementById("quiz");
+  const quiz2 = document.getElementById("quiz2");
+  const quizNext = document.getElementById("quizNext");
+  const success = document.getElementById("success");
+
+  if (intro) intro.classList.add("hidden");
+  if (quiz) quiz.classList.add("hidden");
+  if (quizNext) quizNext.classList.add("hidden");
+  if (success) success.classList.add("hidden");
+  if (quiz2) quiz2.classList.remove("hidden");
+  quiz2Cur = 0;
+  renderQuiz2();
+}
+
 function exitQuiz() {
   clearInterval(timerId);
   const quiz = document.getElementById("quiz");
@@ -338,6 +389,84 @@ function exitQuiz() {
   drawProg();
   if (document.getElementById("status")) document.getElementById("status").textContent = "";
   if (document.getElementById("resultModal")) document.getElementById("resultModal").classList.add("hidden");
+}
+
+function exitQuiz2() {
+  const quiz2 = document.getElementById("quiz2");
+  const intro = document.getElementById("intro");
+  if (quiz2) quiz2.classList.add("hidden");
+  if (intro) intro.classList.remove("hidden");
+}
+
+function renderQuiz2() {
+  const question = quiz2Questions[quiz2Cur];
+  const progress = document.getElementById("quiz2Progress");
+  const questionEl = document.getElementById("quiz2Question");
+  const optionsEl = document.getElementById("quiz2Options");
+  const feedback = document.getElementById("quiz2Feedback");
+  const nextButton = document.getElementById("quiz2Next");
+
+  quiz2Answered = false;
+  if (progress) progress.textContent = (quiz2Cur + 1) + " / " + quiz2Questions.length;
+  if (questionEl) questionEl.textContent = question.question;
+  if (feedback) feedback.textContent = "";
+  if (feedback) feedback.className = "quiz2-feedback";
+  if (nextButton) nextButton.disabled = true;
+  if (optionsEl) {
+    optionsEl.innerHTML = "";
+    question.options.forEach(function (option, index) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "quiz2-option";
+      button.textContent = option;
+      button.addEventListener("click", function () {
+        answerQuiz2(index, button);
+      });
+      optionsEl.appendChild(button);
+    });
+  }
+}
+
+function answerQuiz2(index, selectedButton) {
+  if (quiz2Answered) return;
+
+  const question = quiz2Questions[quiz2Cur];
+  const feedback = document.getElementById("quiz2Feedback");
+  if (index === question.correctAnswerIndex) {
+    quiz2Answered = true;
+    selectedButton.classList.add("correct");
+    if (feedback) {
+      feedback.className = "quiz2-feedback correct";
+      feedback.textContent = "ត្រឹមត្រូវ! " + question.explanation;
+    }
+    document.querySelectorAll(".quiz2-option").forEach(function (button) {
+      button.disabled = true;
+    });
+    const nextButton = document.getElementById("quiz2Next");
+    if (nextButton) nextButton.disabled = false;
+    return;
+  }
+
+  selectedButton.classList.add("incorrect");
+  selectedButton.disabled = true;
+  if (feedback) {
+    feedback.className = "quiz2-feedback incorrect";
+    feedback.textContent = "មិនត្រឹមត្រូវទេ។ សូមព្យាយាមម្តងទៀត។";
+  }
+}
+
+function nextQuiz2() {
+  if (!quiz2Answered) return;
+  quiz2Cur += 1;
+  if (quiz2Cur >= quiz2Questions.length) {
+    const quiz2 = document.getElementById("quiz2");
+    const success = document.getElementById("success");
+    if (quiz2) quiz2.classList.add("hidden");
+    if (success) success.classList.remove("hidden");
+    celebrate();
+    return;
+  }
+  renderQuiz2();
 }
 
 function goBack() {
@@ -556,11 +685,9 @@ function celebrate() {
 function finish() {
   clearInterval(timerId);
   const quiz = document.getElementById("quiz");
-  const success = document.getElementById("success");
+  const quizNext = document.getElementById("quizNext");
   if (quiz) quiz.classList.add("hidden");
-  if (success) success.classList.remove("hidden");
-  celebrate();
-  showResult(true, "finalMessage");
+  if (quizNext) quizNext.classList.remove("hidden");
 }
 
 const submitButton = document.getElementById("submitBtn");
@@ -571,6 +698,21 @@ if (submitButton) {
 const exitButton = document.getElementById("exitBtn");
 if (exitButton) {
   exitButton.addEventListener("click", exitQuiz);
+}
+
+const quiz2ExitButton = document.getElementById("quiz2ExitBtn");
+if (quiz2ExitButton) {
+  quiz2ExitButton.addEventListener("click", exitQuiz2);
+}
+
+const quiz2NextButton = document.getElementById("quiz2Next");
+if (quiz2NextButton) {
+  quiz2NextButton.addEventListener("click", nextQuiz2);
+}
+
+const nextQuiz2Button = document.getElementById("nextQuiz2Button");
+if (nextQuiz2Button) {
+  nextQuiz2Button.addEventListener("click", startQuiz2);
 }
 
 updateLanguage();
